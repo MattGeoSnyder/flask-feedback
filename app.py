@@ -132,7 +132,7 @@ def delete_feedback(feedback_id):
         db.session.commit()
     else:
         flash('You do not have permissions for this action')
-    return redirect(f'/users/{session["user_id"]}', session=session)
+    return redirect(f'/users/{session["user_id"]}')
     
 
 
