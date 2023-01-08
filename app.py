@@ -3,13 +3,14 @@ from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, User, Feedback
 from forms import RegisterForm, LoginForm, FeedbackForm
 import bcrypt 
+import os
 import pdb
 
 app = Flask(__name__)
 
 app.debug = True
 app.config['SECRET_KEY'] = '$Boy0703'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///feedback'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','postgresql:///feedback')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 
