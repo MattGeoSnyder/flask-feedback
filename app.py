@@ -10,7 +10,9 @@ app = Flask(__name__)
 
 app.debug = True
 app.config['SECRET_KEY'] = '$Boy0703'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','postgresql:///feedback')
+DATABASE_URL = os.environ.get('DATABASE_URL','postgresql:///feedback').replace('postgres', 'postgresql')
+DATABASE_URL = DATABASE_URL.replace('postgres', 'postgresql')
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 
